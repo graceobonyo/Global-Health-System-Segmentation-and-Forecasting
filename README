@@ -1,6 +1,4 @@
-
-
-# Global Health System Segmentation and Forecasting of Health Outcomes Using Advanced Machine Learning Techniques
+# Global-Health-System-Segmentation-and-Forecasting
 
 # Project Overview
 
@@ -17,8 +15,11 @@ Despite significant advancements in medicine and healthcare infrastructure, subs
 This project addresses these challenges by:
 
 Segmenting countries according to healthcare performance and socioeconomic characteristics.
+
 Identifying distinct global healthcare system groups.
+
 Forecasting future life expectancy using advanced forecasting models.
+
 Comparing traditional and deep learning forecasting approaches.
 
 
@@ -29,13 +30,21 @@ Main Objective
 To analyze global health system performance and forecast future health outcomes using machine learning and deep learning techniques.
 
 Specific Objectives
+
 Perform data preprocessing and preparation of global health indicators.
+
 Apply PCA to reduce data dimensionality.
+
 Cluster countries according to health and socioeconomic indicators using K-Means.
+
 Evaluate cluster quality using the Silhouette Score.
+
 Forecast life expectancy trends using Prophet.
+
 Develop an LSTM deep learning forecasting model.
+
 Compare forecasting performance using MAE and RMSE.
+
 Generate future life expectancy forecasts from 2025 to 2030.
 
 # Dataset Description
@@ -60,32 +69,50 @@ Selected Healthcare Indicators
 Seven key indicators were selected to represent healthcare performance and socioeconomic development:
 
 Indicator	Description
-Life Expectancy	Average lifespan at birth
-Maternal Mortality	Maternal deaths per 100,000 live births
-Under-5 Mortality	Child deaths before age five
-Health Expenditure (% GDP)	Healthcare spending as percentage of GDP
-GDP per Capita	Economic development indicator
-Physicians per 1000	Healthcare workforce availability
-Hospital Beds per 1000	Healthcare infrastructure capacity
+Life Expectancy	 - Average lifespan at birth
+
+Maternal Mortality- Maternal deaths per 100,000 live births
+
+Under-5 Mortality -	Child deaths before age five
+
+Health Expenditure (% GDP) - Healthcare spending as percentage of GDP
+
+GDP per Capita	- Economic development indicator 
+
+Physicians per 1000	- Healthcare workforce availability
+
+Hospital Beds per 1000	- Healthcare infrastructure capacity
 
 # Technologies used
-Technologies Used
-Programming Language
+
 Python
+
 Libraries
+
 pandas
+
 numpy
+
 matplotlib
+
 seaborn
+
 scikit-learn
+
 prophet
+
 tensorflow
+
 keras
 
-Machine Learning Techniques
+# Machine Learning Techniques
+
 Principal Component Analysis (PCA)
+
 K-Means Clustering
+
 Prophet Forecasting
+
 Long Short-Term Memory (LSTM)
 
 
@@ -95,8 +122,11 @@ Long Short-Term Memory (LSTM)
 Data preprocessing involved:
 
 Missing value identification
+
 Median imputation
+
 Feature selection
+
 Data normalization and standardization
 
 A Simple Imputer was used to replace missing numerical values with median values to preserve dataset integrity.
@@ -134,9 +164,13 @@ Cluster 0: Vulnerable Health Systems
 Characteristics:
 
 Lowest life expectancy
-Highest maternal mortality
+
+Highest maternal mortality 
+
 Highest under-five mortality
+
 Limited healthcare resources
+
 Lowest GDP per capita
 
 Example Countries:
@@ -195,23 +229,28 @@ Switzerland
 Japan
 Norway
 United States
-Time Series Forecasting
+
+# Time Series Forecasting
 
 The forecasting component focused on predicting future life expectancy trends in Kenya.
 
 Two forecasting approaches were implemented:
 
-Model 1: Prophet
+##### Model 1: Prophet
 
 Prophet is a statistical forecasting method developed for modelling time series data with trends and seasonal effects.
 
 Prophet Results
-Metric	ValueMAE	3.08
+
+Metric	Value
+
+MAE	3.08
+
 RMSE	3.47
 
 The Prophet model successfully captured the overall upward trend in life expectancy but struggled to model abrupt fluctuations.
 
-Model 2: Long Short-Term Memory (LSTM)
+#### Model 2: Long Short-Term Memory (LSTM)
 
 LSTM is a deep learning model specifically designed for sequential and time-series data.
 
@@ -229,27 +268,38 @@ Batch Size: 4
 Optimizer: Adam
 Loss Function: Mean Squared Error
 
-LSTM Performance
-Metric	ValueMAE	0.390
+LSTM Performance Metric	Value
+
+MAE	0.390
+
 RMSE	0.658
+
 R²	0.869
+
 Interpretation
 
 The low MAE and RMSE values indicate highly accurate predictions with minimal forecasting errors.
 
 The R² score of 0.869 shows that the model explained approximately 86.9% of the variability in life expectancy, demonstrating strong predictive capability.
 
-Forecasting Model Comparison
-Model	MAE	RMSEProphet	3.08	3.47
+# Forecasting Model Comparison
+
+Model	MAE	RMSE
+
+Prophet	3.08	3.47
+
 LSTM	0.390	0.658
-Best Model
+
+# Best Model
 
 The LSTM model substantially outperformed Prophet across all evaluation metrics.
 
 Reasons:
 
 Ability to capture long-term dependencies
+
 Lower forecasting errors
+
 Higher predictive accuracy
 
 Therefore, the LSTM model was selected as the final forecasting model.
@@ -261,7 +311,10 @@ The LSTM model was used to forecast future life expectancy values from 2025 to 2
 The forecasts indicate:
 
 A continued increase in life expectancy.
+
 Stable long-term growth.
+
 No significant declines anticipated during the forecast horizon.
 
 These results suggest ongoing improvements in healthcare outcomes and population health.
+
