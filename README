@@ -1,0 +1,267 @@
+
+
+# Global Health System Segmentation and Forecasting of Health Outcomes Using Advanced Machine Learning Techniques
+
+# Project Overview
+
+Healthcare disparities remain a significant global challenge, with countries exhibiting substantial differences in health outcomes, healthcare resource availability, and economic development. Understanding these disparities is essential for healthcare planning, resource allocation, and evidence-based policy formulation.
+
+This project applies unsupervised machine learning and time series forecasting techniques to analyze global healthcare indicators and predict future health outcomes. Specifically, the study uses Principal Component Analysis (PCA) and K-Means Clustering to segment countries into healthcare system categories and employs Prophet and Long Short-Term Memory (LSTM) models to forecast life expectancy trends in Kenya.
+
+The project demonstrates how advanced machine learning techniques can be used to identify global healthcare patterns, evaluate healthcare system performance, and support strategic healthcare decision-making.
+
+# Problem Statement
+
+Despite significant advancements in medicine and healthcare infrastructure, substantial inequalities persist in healthcare access and health outcomes across countries. Policymakers often struggle to identify countries with similar healthcare challenges and predict future health trends to support effective planning.
+
+This project addresses these challenges by:
+
+Segmenting countries according to healthcare performance and socioeconomic characteristics.
+Identifying distinct global healthcare system groups.
+Forecasting future life expectancy using advanced forecasting models.
+Comparing traditional and deep learning forecasting approaches.
+
+
+# Research Objectives
+ 
+Main Objective
+
+To analyze global health system performance and forecast future health outcomes using machine learning and deep learning techniques.
+
+Specific Objectives
+Perform data preprocessing and preparation of global health indicators.
+Apply PCA to reduce data dimensionality.
+Cluster countries according to health and socioeconomic indicators using K-Means.
+Evaluate cluster quality using the Silhouette Score.
+Forecast life expectancy trends using Prophet.
+Develop an LSTM deep learning forecasting model.
+Compare forecasting performance using MAE and RMSE.
+Generate future life expectancy forecasts from 2025 to 2030.
+
+# Dataset Description
+
+The project utilizes global healthcare data obtained from internationally recognized health and development indicators.
+
+Files Used
+health_indicators.csv
+
+Contains historical healthcare indicators for multiple countries across several years.
+
+country_latest.csv
+
+Contains the most recent healthcare indicator values used for clustering countries.
+
+indicator_metadata.csv
+
+Contains metadata describing indicator codes and definitions.
+
+Selected Healthcare Indicators
+
+Seven key indicators were selected to represent healthcare performance and socioeconomic development:
+
+Indicator	Description
+Life Expectancy	Average lifespan at birth
+Maternal Mortality	Maternal deaths per 100,000 live births
+Under-5 Mortality	Child deaths before age five
+Health Expenditure (% GDP)	Healthcare spending as percentage of GDP
+GDP per Capita	Economic development indicator
+Physicians per 1000	Healthcare workforce availability
+Hospital Beds per 1000	Healthcare infrastructure capacity
+
+# Technologies used
+Technologies Used
+Programming Language
+Python
+Libraries
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+prophet
+tensorflow
+keras
+
+Machine Learning Techniques
+Principal Component Analysis (PCA)
+K-Means Clustering
+Prophet Forecasting
+Long Short-Term Memory (LSTM)
+
+
+# Methodology
+1. Data Preprocessing
+
+Data preprocessing involved:
+
+Missing value identification
+Median imputation
+Feature selection
+Data normalization and standardization
+
+A Simple Imputer was used to replace missing numerical values with median values to preserve dataset integrity.
+
+2. Principal Component Analysis (PCA)
+
+PCA was employed to reduce dimensionality while preserving the majority of information contained within the original indicators.
+
+PCA Results
+
+The first two principal components explained approximately 83% of the total variance.
+
+This indicates that the two components successfully retained most of the information present within the original healthcare indicators while reducing computational complexity.
+
+3. K-Means Clustering
+
+K-Means clustering was applied to categorize countries into healthcare system groups.
+
+Optimal Cluster Selection
+
+The Elbow Method identified:
+
+Optimal Number of Clusters = 4
+
+Silhouette Score:
+
+0.427
+
+
+The Silhouette Score indicates moderate cluster quality, suggesting that countries within clusters were sufficiently similar while remaining reasonably distinct from countries in other clusters.
+
+Cluster Analysis Results
+Cluster 0: Vulnerable Health Systems
+
+Characteristics:
+
+Lowest life expectancy
+Highest maternal mortality
+Highest under-five mortality
+Limited healthcare resources
+Lowest GDP per capita
+
+Example Countries:
+
+Nigeria
+Chad
+Somalia
+South Sudan
+Burundi
+
+Cluster 1: Developing Health Systems
+
+Characteristics:
+
+Moderate life expectancy
+Improving healthcare outcomes
+Resource constraints remain
+
+Example Countries:
+
+Kenya
+Tanzania
+Rwanda
+India
+Bangladesh
+
+Cluster 2: Emerging Health Systems
+
+Characteristics:
+
+Strong healthcare performance
+Improving infrastructure
+Moderate healthcare resources
+
+Example Countries:
+
+Brazil
+China
+Malaysia
+Türkiye
+United Arab Emirates
+
+Cluster 3: High-Performing Health Systems
+
+Characteristics:
+
+Highest life expectancy
+Lowest mortality rates
+Advanced healthcare infrastructure
+High healthcare expenditure
+
+Example Countries:
+
+Germany
+Switzerland
+Japan
+Norway
+United States
+Time Series Forecasting
+
+The forecasting component focused on predicting future life expectancy trends in Kenya.
+
+Two forecasting approaches were implemented:
+
+Model 1: Prophet
+
+Prophet is a statistical forecasting method developed for modelling time series data with trends and seasonal effects.
+
+Prophet Results
+Metric	ValueMAE	3.08
+RMSE	3.47
+
+The Prophet model successfully captured the overall upward trend in life expectancy but struggled to model abrupt fluctuations.
+
+Model 2: Long Short-Term Memory (LSTM)
+
+LSTM is a deep learning model specifically designed for sequential and time-series data.
+
+The model architecture consisted of:
+
+LSTM Layer (64 units)
+Dropout Layer (20%)
+LSTM Layer (32 units)
+Dense Output Layer
+
+Training Parameters:
+
+Epochs: 100
+Batch Size: 4
+Optimizer: Adam
+Loss Function: Mean Squared Error
+
+LSTM Performance
+Metric	ValueMAE	0.390
+RMSE	0.658
+R²	0.869
+Interpretation
+
+The low MAE and RMSE values indicate highly accurate predictions with minimal forecasting errors.
+
+The R² score of 0.869 shows that the model explained approximately 86.9% of the variability in life expectancy, demonstrating strong predictive capability.
+
+Forecasting Model Comparison
+Model	MAE	RMSEProphet	3.08	3.47
+LSTM	0.390	0.658
+Best Model
+
+The LSTM model substantially outperformed Prophet across all evaluation metrics.
+
+Reasons:
+
+Ability to capture long-term dependencies
+Lower forecasting errors
+Higher predictive accuracy
+
+Therefore, the LSTM model was selected as the final forecasting model.
+
+Future Life Expectancy Forecast (2025-2030)
+
+The LSTM model was used to forecast future life expectancy values from 2025 to 2030.
+
+The forecasts indicate:
+
+A continued increase in life expectancy.
+Stable long-term growth.
+No significant declines anticipated during the forecast horizon.
+
+These results suggest ongoing improvements in healthcare outcomes and population health.
