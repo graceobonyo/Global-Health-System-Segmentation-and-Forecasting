@@ -1,319 +1,263 @@
-# Global-Health-System-Segmentation-and-Forecasting
+README.md
+Forecasting Kenya's Life Expectancy Using Prophet and LSTM Deep Learning
+Project Overview
 
-# Project Overview
+Life expectancy is one of the most important indicators of a country's overall health, economic development, and quality of life. Understanding future life expectancy trends can help governments, healthcare organizations, and policymakers make informed decisions regarding healthcare planning, resource allocation, and public health interventions.
 
-Healthcare disparities remain a significant global challenge, with countries exhibiting substantial differences in health outcomes, healthcare resource availability, and economic development. Understanding these disparities is essential for healthcare planning, resource allocation, and evidence-based policy formulation.
+This project applies both a traditional time-series forecasting model (Prophet) and a deep learning model (Long Short-Term Memory - LSTM) to forecast Kenya's life expectancy. The models are evaluated and compared using forecasting error metrics to identify the most accurate approach for future life expectancy prediction.
 
-This project applies unsupervised machine learning and time series forecasting techniques to analyze global healthcare indicators and predict future health outcomes. Specifically, the study uses Principal Component Analysis (PCA) and K-Means Clustering to segment countries into healthcare system categories and employs Prophet and Long Short-Term Memory (LSTM) models to forecast life expectancy trends in Kenya.
+Background
 
-The project demonstrates how advanced machine learning techniques can be used to identify global healthcare patterns, evaluate healthcare system performance, and support strategic healthcare decision-making.
+Over the past two decades, Kenya has experienced significant improvements in healthcare services, disease prevention programs, maternal and child health outcomes, and economic development. These improvements have contributed to a gradual increase in life expectancy.
 
-# Problem Statement
+According to the World Bank, Kenya's life expectancy at birth reached 63.83 years in 2024, up from approximately 56.08 years in 2000.
 
-Despite significant advancements in medicine and healthcare infrastructure, substantial inequalities persist in healthcare access and health outcomes across countries. Policymakers often struggle to identify countries with similar healthcare challenges and predict future health trends to support effective planning.
+Current health expenditure in Kenya was 4.35% of GDP in 2023, reflecting continued investment in healthcare services and infrastructure.
 
-This project addresses these challenges by:
+Despite these improvements, forecasting future life expectancy remains challenging due to changing healthcare, demographic, economic, and environmental conditions.
 
-Segmenting countries according to healthcare performance and socioeconomic characteristics.
+Problem Statement
 
-Identifying distinct global healthcare system groups.
+Kenya has experienced substantial improvements in healthcare and life expectancy over the past two decades. However, predicting future life expectancy remains difficult due to evolving healthcare, economic, and demographic conditions. Accurate forecasting is essential for long-term healthcare planning, policy development, and resource allocation. This project seeks to forecast Kenya's future life expectancy using advanced time-series forecasting techniques and determine whether deep learning models can provide more accurate predictions than traditional forecasting approaches.
 
-Forecasting future life expectancy using advanced forecasting models.
-
-Comparing traditional and deep learning forecasting approaches.
-
-
-# Research Objectives
- 
+Objectives
 Main Objective
 
-To analyze global health system performance and forecast future health outcomes using machine learning and deep learning techniques.
+To forecast Kenya's life expectancy using Prophet and LSTM models and determine the most accurate forecasting approach.
 
 Specific Objectives
-
-Perform data preprocessing and preparation of global health indicators.
-
-Apply PCA to reduce data dimensionality.
-
-Cluster countries according to health and socioeconomic indicators using K-Means.
-
-Evaluate cluster quality using the Silhouette Score.
-
-Forecast life expectancy trends using Prophet.
-
+Analyze historical trends in Kenya's life expectancy.
+Examine health and socioeconomic indicators associated with life expectancy.
+Build a Prophet forecasting model.
 Develop an LSTM deep learning forecasting model.
+Compare model performance using MAE and RMSE.
+Forecast Kenya's life expectancy from 2025 to 2030.
+Dataset Description
+Source
 
-Compare forecasting performance using MAE and RMSE.
+Global Health Indicators Dataset
 
-Generate future life expectancy forecasts from 2025 to 2030.
-
-# Dataset Description
-
-The project utilizes global healthcare data obtained from internationally recognized health and development indicators.
-
-Files Used
-health_indicators.csv
-
-Contains historical healthcare indicators for multiple countries across several years.
-
-country_latest.csv
-
-Contains the most recent healthcare indicator values used for clustering countries.
-
-indicator_metadata.csv
-
-Contains metadata describing indicator codes and definitions.
-
-Selected Healthcare Indicators
-
-Seven key indicators were selected to represent healthcare performance and socioeconomic development:
-
-Indicator	Description
-Life Expectancy	 - Average lifespan at birth
-
-Maternal Mortality- Maternal deaths per 100,000 live births
-
-Under-5 Mortality -	Child deaths before age five
-
-Health Expenditure (% GDP) - Healthcare spending as percentage of GDP
-
-GDP per Capita	- Economic development indicator 
-
-Physicians per 1000	- Healthcare workforce availability
-
-Hospital Beds per 1000	- Healthcare infrastructure capacity
-
-# Technologies used
-
-Python
-
-Libraries
-
-pandas
-
-numpy
-
-matplotlib
-
-seaborn
-
-scikit-learn
-
-prophet
-
-tensorflow
-
-keras
-
-# Machine Learning Techniques
-
-Principal Component Analysis (PCA)
-
-K-Means Clustering
-
-Prophet Forecasting
-
-Long Short-Term Memory (LSTM)
-
-
-# Methodology
-1. Data Preprocessing
-
-Data preprocessing involved:
-
-Missing value identification
-
-Median imputation
-
-Feature selection
-
-Data normalization and standardization
-
-A Simple Imputer was used to replace missing numerical values with median values to preserve dataset integrity.
-
-2. Principal Component Analysis (PCA)
-
-PCA was employed to reduce dimensionality while preserving the majority of information contained within the original indicators.
-
-PCA Results
-
-The first two principal components explained approximately 83% of the total variance.
-
-This indicates that the two components successfully retained most of the information present within the original healthcare indicators while reducing computational complexity.
-
-3. K-Means Clustering
-
-K-Means clustering was applied to categorize countries into healthcare system groups.
-
-Optimal Cluster Selection
-
-The Elbow Method identified:
-
-Optimal Number of Clusters = 4
-
-Silhouette Score:
-
-0.427
-
-
-The Silhouette Score indicates moderate cluster quality, suggesting that countries within clusters were sufficiently similar while remaining reasonably distinct from countries in other clusters.
-
-Cluster Analysis Results
-Cluster 0: Vulnerable Health Systems
-
-Characteristics:
-
-Lowest life expectancy
-
-Highest maternal mortality 
-
-Highest under-five mortality
-
-Limited healthcare resources
-
-Lowest GDP per capita
-
-Example Countries:
-
-Nigeria
-Chad
-Somalia
-South Sudan
-Burundi
-
-Cluster 1: Developing Health Systems
-
-Characteristics:
-
-Moderate life expectancy
-Improving healthcare outcomes
-Resource constraints remain
-
-Example Countries:
+Country Selected
 
 Kenya
-Tanzania
-Rwanda
-India
-Bangladesh
 
-Cluster 2: Emerging Health Systems
+Features Used
+Variable	DescriptionYear	Observation year
+Life Expectancy	Average expected lifespan
+Maternal Mortality	Maternal deaths per population
+Under-5 Mortality	Child deaths under age five
+Health Expenditure (% GDP)	Healthcare investment
+GDP per Capita	Economic development indicator
+Physicians per 1000	Healthcare workforce availability
+Hospital Beds per 1000	Healthcare infrastructure
+Nurses per 1000	Nursing workforce availability
+Population	Total population
+Methodology
+1. Data Preparation
 
-Characteristics:
+The following preprocessing steps were performed:
 
-Strong healthcare performance
-Improving infrastructure
-Moderate healthcare resources
+Filtered data for Kenya.
+Selected health-related indicators.
+Identified missing values.
+Converted numeric variables to correct data types.
+Imputed missing values using median imputation.
+Missing Value Handling
 
-Example Countries:
+Median imputation was chosen because it is less sensitive to outliers and preserves the central tendency of the data.
 
-Brazil
-China
-Malaysia
-Türkiye
-United Arab Emirates
+2. Exploratory Data Analysis (EDA)
 
-Cluster 3: High-Performing Health Systems
+Several visualizations were created to understand historical trends and relationships.
 
-Characteristics:
+Life Expectancy Trend
 
-Highest life expectancy
-Lowest mortality rates
-Advanced healthcare infrastructure
-High healthcare expenditure
+Key Findings:
 
-Example Countries:
+Increased from approximately 56 years in 2000 to 64 years in 2024.
+Temporary decline around 2020-2021.
+Long-term upward trend indicates improvements in population health.
+Maternal Mortality Trend
 
-Germany
-Switzerland
-Japan
-Norway
-United States
+Key Findings:
 
-# Time Series Forecasting
+General reduction over time.
+Negative relationship with life expectancy.
+Lower maternal mortality contributes to increased life expectancy.
+Under-5 Mortality Trend
 
-The forecasting component focused on predicting future life expectancy trends in Kenya.
+Key Findings:
 
-Two forecasting approaches were implemented:
+Significant decline throughout the study period.
+Strong inverse relationship with life expectancy.
+One of the strongest indicators of population health.
+Health Expenditure Trend
 
-##### Model 1: Prophet
+Key Findings:
 
-Prophet is a statistical forecasting method developed for modelling time series data with trends and seasonal effects.
+Healthcare investment generally increased over time.
+Greater healthcare spending supports improved healthcare outcomes.
+Healthcare Infrastructure Trends
 
+Indicators:
+
+Physicians per 1,000 people
+Nurses per 1,000 people
+Hospital beds per 1,000 people
+
+Key Findings:
+
+Physician and nurse density improved over time.
+Hospital bed availability remained relatively stable.
+Improved healthcare infrastructure likely contributed to rising life expectancy.
+Correlation Analysis
+
+Major Findings:
+
+Positive Correlations with Life Expectancy
+GDP per Capita (0.93)
+Population
+Nurses per 1,000
+Health Expenditure
+Negative Correlations with Life Expectancy
+Under-5 Mortality (-0.97)
+Maternal Mortality
+
+These findings suggest that economic growth, healthcare investment, and improved healthcare infrastructure support longer life expectancy.
+
+Model Development
+Prophet Model
+Data Preparation
+
+The data was reformatted to meet Prophet's requirements:
+
+ds = Date column
+y = Target variable (Life Expectancy)
+Prophet Forecasting Process
+Split data into training and testing sets.
+Train Prophet model.
+Generate future forecasts.
+Evaluate performance using MAE and RMSE.
 Prophet Results
-
-Metric	Value
-
-MAE	3.08
-
+Metric	ValueMAE	3.08
 RMSE	3.47
+Interpretation
 
-The Prophet model successfully captured the overall upward trend in life expectancy but struggled to model abrupt fluctuations.
+Prophet successfully captured the long-term upward trend in life expectancy but struggled to predict the temporary decline observed during 2020-2021. As a result, prediction errors increased during that period.
 
-#### Model 2: Long Short-Term Memory (LSTM)
+LSTM Model
+Why LSTM?
 
-LSTM is a deep learning model specifically designed for sequential and time-series data.
+LSTM is a specialized recurrent neural network designed for time-series forecasting. It can learn long-term dependencies and capture complex temporal patterns in sequential data.
 
-The model architecture consisted of:
-
+LSTM Architecture
 LSTM Layer (64 units)
 Dropout Layer (20%)
 LSTM Layer (32 units)
 Dense Output Layer
+Data Preparation
 
-Training Parameters:
+The life expectancy series was:
 
-Epochs: 100
-Batch Size: 4
-Optimizer: Adam
-Loss Function: Mean Squared Error
+Scaled using MinMaxScaler.
+Converted into sequential windows.
+Split into training and testing datasets.
+Training Performance
 
-LSTM Performance Metric	Value
+The training and validation loss curves showed:
 
-MAE	0.390
-
-RMSE	0.658
-
-R²	0.869
-
+Rapid reduction in loss during early epochs.
+Stable learning after convergence.
+No evidence of severe overfitting.
+Good model generalization.
+Model Evaluation
+LSTM Results
+Metric	ValueMAE	1.285
+RMSE	1.393
+R²	-0.548
 Interpretation
 
-The low MAE and RMSE values indicate highly accurate predictions with minimal forecasting errors.
+The low MAE and RMSE values indicate that the LSTM model generated forecasts much closer to actual life expectancy values than Prophet. Although R² was negative, this is likely due to the small test dataset and limited observations available for evaluation.
 
-The R² score of 0.869 shows that the model explained approximately 86.9% of the variability in life expectancy, demonstrating strong predictive capability.
+Model Comparison
+Model	MAE	RMSEProphet	3.078	3.467
+LSTM	1.285	1.393
+Findings
+LSTM produced substantially lower forecasting errors.
+LSTM captured temporal patterns more effectively.
+LSTM was selected as the best-performing model.
+Future Forecast (2025–2030)
+Year	Predicted Life Expectancy2025	64.02
+2026	64.13
+2027	64.27
+2028	64.39
+2029	64.48
+2030	64.58
+Forecast Interpretation
 
-# Forecasting Model Comparison
+The model predicts a gradual increase in Kenya's life expectancy from 64.02 years in 2025 to 64.58 years in 2030.
 
-Model	MAE	RMSE
+This trend suggests:
 
-Prophet	3.08	3.47
+Continued healthcare improvements.
+Better child and maternal health outcomes.
+Sustained healthcare investment.
+Positive long-term population health outcomes.
+Limitations
+1. Limited Dataset Size
 
-LSTM	0.390	0.658
+The study used annual observations from 2000 to 2024, providing relatively few records for deep learning.
 
-# Best Model
+2. Univariate Forecasting
 
-The LSTM model substantially outperformed Prophet across all evaluation metrics.
+LSTM relied solely on historical life expectancy values and did not directly incorporate additional health indicators.
 
-Reasons:
+3. External Events
 
-Ability to capture long-term dependencies
+Unexpected events such as pandemics, economic crises, or policy changes cannot be predicted from historical trends alone.
 
-Lower forecasting errors
+4. Small Test Dataset
 
-Higher predictive accuracy
+A limited number of testing observations reduced the reliability of certain evaluation metrics such as R².
 
-Therefore, the LSTM model was selected as the final forecasting model.
+Recommendations
+1. Increase Healthcare Investment
 
-Future Life Expectancy Forecast (2025-2030)
+Continued investment in healthcare infrastructure and services may further improve life expectancy.
 
-The LSTM model was used to forecast future life expectancy values from 2025 to 2030.
+2. Reduce Child and Maternal Mortality
 
-The forecasts indicate:
+Strengthening maternal and child healthcare programs should remain a priority.
 
-A continued increase in life expectancy.
+3. Expand Healthcare Workforce
 
-Stable long-term growth.
+Increasing the number of physicians and nurses can improve healthcare accessibility and quality.
 
-No significant declines anticipated during the forecast horizon.
+4. Develop Multivariate Forecasting Models
 
-These results suggest ongoing improvements in healthcare outcomes and population health.
+Future research should incorporate:
+
+GDP per capita
+Healthcare expenditure
+Maternal mortality
+Under-5 mortality
+Healthcare workforce indicators
+
+to improve forecasting accuracy.
+
+5. Explore Advanced Deep Learning Models
+
+Future studies can compare:
+
+LSTM
+GRU
+Bidirectional LSTM
+Transformer Models
+
+to identify the most accurate forecasting approach.
+
+Conclusion
+
+This study successfully applied Prophet and LSTM models to forecast life expectancy in Kenya. Exploratory analysis revealed substantial improvements in healthcare outcomes, reductions in child mortality, and growth in healthcare infrastructure. Model evaluation demonstrated that the LSTM model outperformed Prophet, achieving significantly lower forecasting errors (MAE = 1.285 and RMSE = 1.393) compared to Prophet (MAE = 3.078 and RMSE = 3.467).
+
+Based on future forecasts, Kenya's life expectancy is expected to increase from 64.02 years in 2025 to 64.58 years in 2030, suggesting continued improvements in population health if current trends persist. The findings demonstrate the potential of deep learning techniques such as LSTM to support evidence-based healthcare planning and policy decision-making.
